@@ -1,8 +1,10 @@
+
 const FILE_PATH = "./data.json";
-const simpleGit = require("simple-git");
-const jsonfile = require("jsonfile");
-const moment = require("moment");
-const random = require("random");
+import simpleGit from "simple-git";
+import jsonfile from "jsonfile";
+import moment from "moment";
+import random from "random";
+
 
 // Change the working directory to where your local repository is located
 const git = simpleGit("/Users/rohitaggarwal/Desktop/test/GitHub_Graph");
@@ -10,7 +12,7 @@ const git = simpleGit("/Users/rohitaggarwal/Desktop/test/GitHub_Graph");
 const makeCommit = (n) => {
   if (n === 0) {
     // Push changes to the remote repository
-    git.push(["-u", "origin", "master"], (err, result) => {
+    git.push(["-u", "origin", "main"], (err, result) => {
       if (err) {
         console.error("Error pushing to remote:", err);
       } else {
@@ -23,7 +25,7 @@ const makeCommit = (n) => {
   const x = random.int(0, 54);
   const y = random.int(0, 6);
   const DATE = moment()
-    .subtract(0, "y")
+    .subtract(1, "y")
     .add(1, "d")
     .add(x, "w")
     .add(y, "d")
@@ -38,7 +40,7 @@ const makeCommit = (n) => {
     git
       .add([FILE_PATH])
       .commit(DATE, { "--date": DATE })
-      .push(["-u", "origin", "origin"], (err, result) => {
+      .push(["-u", "origin", "main"], (err, result) => {
         if (err) {
           console.error("Error pushing to remote:", err);
         } else {
