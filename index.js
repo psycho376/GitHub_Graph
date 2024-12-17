@@ -26,7 +26,7 @@ const makeCommit = (n) => {
   
   // Calculate date starting from 2 years ago
   const DATE = moment()
-    .subtract(2, 'years')
+    .subtract(0, 'years')
     .startOf('year')              // Start from beginning of year
     .add(x, 'weeks')             // Add weeks
     .add(y, 'days')              // Add days
