@@ -20,16 +20,15 @@ const makeCommit = (n) => {
     return;
   }
 
-  // Generate random position for the contribution graph
-  const x = random.int(0, 51); // 52 weeks in a year
+  // Generate random position for recent contributions (last 2 weeks)
+  const x = random.int(0, 1);  // Last 2 weeks
   const y = random.int(0, 6);  // 7 days in a week
   
-  // Calculate date starting from 2 years ago
+  // Calculate date for recent contributions
   const DATE = moment()
-    .subtract(0, 'years')
-    .startOf('year')              // Start from beginning of year
-    .add(x, 'weeks')             // Add weeks
-    .add(y, 'days')              // Add days
+    .subtract(2, 'weeks')
+    .add(x, 'weeks')             // Add up to 2 weeks
+    .add(y, 'days')              // Add days within the week
     .set('hour', random.int(9, 17))    // Random work hour (9 AM to 5 PM)
     .set('minute', random.int(0, 59))
     .set('second', random.int(0, 59))
@@ -68,13 +67,13 @@ const initRepo = async () => {
     await git.add([FILE_PATH]);
     await git.commit("Initial commit");
     console.log("Repository initialized successfully");
-    
-    // Start the contribution process
-    makeCommit(120);
   } catch (err) {
     console.error("Error initializing repository:", err);
   }
 };
 
 // Start the process
-initRepo();
+initRepo().then(() => {
+  // Make 20-30 commits spread across 2 weeks
+  makeCommit(random.int(20, 30));
+});
