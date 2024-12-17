@@ -1,5 +1,5 @@
 {
-  "name": "github-graph",
+  "name": "exbisam",
   "version": "1.0.0",
   "description": "Do you want to have coll graph?",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "(https://github.com/psycho376/github-bot)"
+    "url": "https://github.com/exbisam/graph"
   },
   "author": "Rohit Aggarwal",
   "license": "ISC",
@@ -21,5 +21,8 @@
     "simple-git": "^2.48.0",
     "webpack-dev-server": "^3.11.2"
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "keywords": [
+    "M"
+  ]
 }
